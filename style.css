@@ -18,7 +18,7 @@ small{display:block;color:var(--muted);font-size:.82rem;font-weight:400}
 .top{background:var(--navy);color:#fff;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 16px;padding-top:max(10px,env(safe-area-inset-top))}
 .brand{display:flex;align-items:center;gap:10px}
 .brand b{font-size:1.05rem}
-.brand small{color:var(--sun);font-weight:600;letter-spacing:.08em}
+
 .logo{width:38px;height:38px;object-fit:contain;background:#fff;border-radius:50%;padding:3px}
 .logo.big{width:84px;height:84px;margin:0 auto 8px;display:block}
 .who{display:flex;align-items:center;gap:10px;text-align:right}
@@ -132,3 +132,85 @@ dialog label{margin-top:10px}
   .stat b{font-size:1.2rem}
   .seg button{padding:7px 8px;font-size:.82rem}
 }
+
+/* =================== ভাষা বাটন =================== */
+.lang{font-weight:600;font-size:.85rem;padding:6px 12px;border-radius:999px;cursor:pointer}
+.lang.corner{position:absolute;top:12px;right:12px;background:var(--sun-soft);color:#8a5a00;border:1px solid #f6d79a}
+.top .lang{margin-right:2px}
+.login{position:relative;overflow:hidden}
+.brand b{font-size:1.08rem;letter-spacing:.01em}
+
+/* =================== অ্যানিমেশন =================== */
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pop{0%{transform:scale(.85)}60%{transform:scale(1.08)}100%{transform:scale(1)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(245,166,35,.0)}50%{box-shadow:0 0 0 10px rgba(245,166,35,.18)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes shimmer{0%{background-position:-400px 0}100%{background-position:400px 0}}
+@keyframes ripple{to{transform:scale(2.6);opacity:0}}
+@keyframes toastIn{from{opacity:0;transform:translate(-50%,20px)}to{opacity:1;transform:translate(-50%,0)}}
+@keyframes wave{0%,60%,100%{transform:rotate(0)}10%,30%{transform:rotate(16deg)}20%,40%{transform:rotate(-8deg)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+
+.rise{animation:rise .5s cubic-bezier(.2,.7,.2,1) backwards}
+.login{animation:rise .6s cubic-bezier(.2,.7,.2,1) backwards}
+.logo-wrap{width:96px;height:96px;margin:0 auto 8px;border-radius:50%;display:grid;place-items:center;animation:glow 3s ease-in-out infinite, floaty 4s ease-in-out infinite}
+.logo-wrap .logo.big{margin:0}
+.sunrays{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.sunrays::before{content:"";position:absolute;left:50%;top:-60vmax;width:120vmax;height:120vmax;margin-left:-60vmax;
+  background:repeating-conic-gradient(from 0deg,rgba(245,166,35,.07) 0 6deg,transparent 6deg 18deg);animation:spin 90s linear infinite;border-radius:50%}
+.login-wrap{position:relative;overflow:hidden}
+.login-wrap>*:not(.sunrays){position:relative;z-index:1}
+.alert.shake{animation:shake .45s ease}
+
+.tabs a{position:relative;transition:background .25s,color .25s}
+.tabs a:not(.on):hover{color:var(--navy)}
+.card{transition:transform .2s ease, box-shadow .2s ease}
+@media (hover:hover){.card:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(19,41,75,.08)}}
+.row{transition:background .2s, opacity .25s, transform .25s}
+@media (hover:hover){.row:hover{background:#fafbfd}}
+.row.leaving{opacity:0;transform:translateX(30px)}
+
+button,.btn,.tabs a,.seg-tabs a{position:relative;overflow:hidden;transition:transform .12s ease, background .2s, color .2s, box-shadow .2s}
+button:active:not(:disabled),.btn:active{transform:scale(.97)}
+.primary:hover{box-shadow:0 6px 16px rgba(19,41,75,.25)}
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.45);transform:scale(0);animation:ripple .6s ease-out;pointer-events:none}
+.light .ripple,.seg button .ripple,.danger .ripple,.lang .ripple{background:rgba(19,41,75,.15)}
+button.loading::after{content:"";display:inline-block;width:14px;height:14px;margin-left:8px;vertical-align:-2px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:spin .7s linear infinite}
+
+.seg button.pop{animation:pop .3s ease}
+.pill{transition:transform .2s}
+.tag.pulse{animation:pulse 1.6s ease-in-out infinite}
+.wave{display:inline-block;transform-origin:70% 70%;animation:wave 2.2s ease-in-out 1}
+.day.today{animation:glow 3s ease-in-out infinite}
+
+.toast{animation:toastIn .3s cubic-bezier(.2,.7,.2,1) both;transition:opacity .3s, transform .3s}
+.toast.out{opacity:0;transform:translate(-50%,20px)}
+dialog.dlg[open]{animation:rise .3s cubic-bezier(.2,.7,.2,1)}
+dialog.dlg::backdrop{animation:fadeIn .25s}
+
+.skeleton{height:90px;border-radius:var(--r);margin-bottom:14px;background:linear-gradient(90deg,#e9edf3 0,#f5f7fb 50%,#e9edf3 100%);background-size:800px 100%;animation:shimmer 1.2s linear infinite}
+.skeleton.short{height:60px;width:70%}
+
+/* ছোট সাজ */
+.avatar{flex-shrink:0;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--navy2),var(--sun))}
+.pdf-ico{flex-shrink:0;width:38px;height:44px;border-radius:6px;display:grid;place-items:center;font-size:.7rem;font-weight:700;color:#fff;background:linear-gradient(160deg,#e05252,#b83232);box-shadow:inset -6px -6px 0 rgba(255,255,255,.12)}
+.bar{display:inline-block;width:60px;height:6px;border-radius:99px;background:#e7ecf3;margin-right:8px;vertical-align:middle;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ok);border-radius:99px;animation:grow .8s cubic-bezier(.2,.7,.2,1) both;transform-origin:left}
+.low .bar i{background:var(--bad)}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.more{display:inline-block;margin-top:8px;font-weight:600;text-decoration:none;transition:transform .2s}
+.more:hover{transform:translateX(4px)}
+
+@media (max-width:560px){
+  .top .lang{padding:6px 10px}
+  .avatar{width:32px;height:32px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+.login .lang.corner{width:auto;margin:0;padding:6px 14px;z-index:2}
+.brand b{white-space:nowrap}
+@media (max-width:560px){.brand b{font-size:.98rem}.brand .logo{width:34px;height:34px}.top{gap:8px;padding-left:12px;padding-right:12px}}
