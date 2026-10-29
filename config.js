@@ -1,7 +1,7 @@
 // ===== শুধু এই ফাইলটা এডিট করতে হবে (README-র ধাপ ৬) =====
 window.TSA_CONFIG = {
-  SUPABASE_URL: "https://YOUR-PROJECT-ID.supabase.co",
-  SUPABASE_ANON_KEY: "YOUR-ANON-PUBLIC-KEY",
+  SUPABASE_URL: "https://eylrdadethtxwmijdxdy.supabase.co",
+  SUPABASE_ANON_KEY: "sb_publishable_2m-osKUGk1ZiHloiDIedqQ_GNj1hw13",
 
   // লগইনের জন্য ভেতরে ব্যবহার হয় (Academy ID@এই ডোমেইন)। কোনো ইমেইল যায় না।
   // একবার সদস্য যোগ করার পর আর বদলাবে না।
